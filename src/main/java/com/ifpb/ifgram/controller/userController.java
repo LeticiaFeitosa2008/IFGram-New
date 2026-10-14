@@ -3,6 +3,7 @@ package com.ifpb.ifgram.controller;
 
 import com.ifpb.ifgram.DTO.UserRequest;
 import com.ifpb.ifgram.DTO.UserResponse;
+import com.ifpb.ifgram.service.EmailDuplicadoException;
 import com.ifpb.ifgram.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class userController {
     }
 
     @PostMapping
-    public UserResponse criar(@Valid @RequestBody UserRequest request) {
+    public UserResponse criar(@Valid @RequestBody UserRequest request) throws EmailDuplicadoException {
         return service.criar(request);
     }
 
@@ -33,8 +34,8 @@ public class userController {
     }
 
     @PutMapping
-    public String putUser(){
-        return "Chamei o endpoint como um put";
+    public UserResponse UpdateUser(UserRequest request){
+        return service.atualizarUsuario(request);
     }
 
     @PatchMapping

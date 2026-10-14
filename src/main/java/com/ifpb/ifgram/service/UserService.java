@@ -4,11 +4,13 @@ import com.ifpb.ifgram.DTO.UserRequest;
 import com.ifpb.ifgram.DTO.UserResponse;
 import com.ifpb.ifgram.model.User;
 import com.ifpb.ifgram.repository.UserRepository;
+import io.swagger.v3.oas.annotations.info.Contact;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class UserService {
@@ -19,7 +21,7 @@ public class UserService {
 
 }
     @Transactional
-    public UserResponse criar(UserRequest request) {
+    public UserResponse criar(UserRequest request) throws EmailDuplicadoException {
         if (repository.existsByEmail(request.email())) {
             throw new EmailDuplicadoException(request.email());
     }
@@ -40,5 +42,17 @@ public class UserService {
             listaUsuariosResponse.add(userReponse);
         }
             return listaUsuariosResponse;
+
+
+        }
+
+        public UserResponse atualizarUsuario(UserRequest userRequest){
+            User usuario = repository.findByEmail(userRequest.email());
+            usuario.setNome(userRequest.nome());
+            repository.save(usuario);
+
+            return  UserResponse.from(usuario);
+
+
     }
 }
