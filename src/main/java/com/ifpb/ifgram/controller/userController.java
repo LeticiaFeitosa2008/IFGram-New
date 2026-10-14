@@ -21,7 +21,6 @@ public class userController {
     public UserResponse criar(@Valid @RequestBody UserRequest request) {
         return service.criar(request);
     }
-}
 
     @GetMapping
     public String getUser(){
