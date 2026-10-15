@@ -28,13 +28,8 @@ public class userController {
         return "get user was called";
     }
 
-    @PostMapping
-    public String postUser(){
-        return "Chamei o endpoint como um post";
-    }
-
     @PutMapping
-    public UserResponse UpdateUser(UserRequest request){
+    public UserResponse UpdateUser(UserRequest request) throws Exception {
         return service.atualizarUsuario(request);
     }
 
