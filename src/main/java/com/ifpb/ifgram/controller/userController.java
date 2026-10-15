@@ -8,6 +8,8 @@ import com.ifpb.ifgram.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("User")
 public class userController {
@@ -24,8 +26,9 @@ public class userController {
     }
 
     @GetMapping
-    public String getUser(){
-        return "get user was called";
+    public List<UserResponse>getUser(){
+        List<UserResponse>listaUsuarios=service.buscarTodosUsuarios();
+        return listaUsuarios;
     }
 
     @PutMapping
@@ -39,7 +42,7 @@ public class userController {
     }
 
     @DeleteMapping
-    public String deletar(){
-        return null;
+    public String deleteUser(){
+        return "Chamei o delete";
     }
 }
