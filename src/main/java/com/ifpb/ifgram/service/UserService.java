@@ -1,10 +1,9 @@
 package com.ifpb.ifgram.service;
 
-import com.ifpb.ifgram.DTO.UserRequest;
-import com.ifpb.ifgram.DTO.UserResponse;
+import com.ifpb.ifgram.dto.UserRequest;
+import com.ifpb.ifgram.dto.UserResponse;
 import com.ifpb.ifgram.model.User;
 import com.ifpb.ifgram.repository.UserRepository;
-import io.swagger.v3.oas.annotations.info.Contact;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

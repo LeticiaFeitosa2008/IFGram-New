@@ -1,8 +1,8 @@
 
 package com.ifpb.ifgram.controller;
 
-import com.ifpb.ifgram.DTO.UserRequest;
-import com.ifpb.ifgram.DTO.UserResponse;
+import com.ifpb.ifgram.dto.UserRequest;
+import com.ifpb.ifgram.dto.UserResponse;
 import com.ifpb.ifgram.service.EmailDuplicadoException;
 import com.ifpb.ifgram.service.UserService;
 import jakarta.validation.Valid;
