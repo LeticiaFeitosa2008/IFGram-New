@@ -1,8 +1,8 @@
-package br.edu.ifpb.ifgram.controller;
+package com.ifpb.ifgram.controller;
 
-import br.edu.ifpb.ifgram.service.PostService;
-import br.edu.ifpb.ifgram.dto.PostRequest;
-import br.edu.ifpb.ifgram.dto.PostResponse;
+import com.ifpb.ifgram.service.PostService;
+import com.ifpb.ifgram.dto.PostRequest;
+import com.ifpb.ifgram.dto.PostResponse;
 
 import jakarta.validation.Valid;
 
@@ -20,19 +20,19 @@ public class PostController {
         this.postService = postService;
     }
 
-    // GET /post
+
     @GetMapping
     public List<PostResponse> listarFeed() {
         return postService.listarFeed();
     }
 
-    // GET /post/{id}
+
     @GetMapping("/{id}")
     public PostResponse buscarPorId(@PathVariable Long id) {
         return postService.buscarPorId(id);
     }
 
-    // GET /post/autor/{autorId}
+
     @GetMapping("/autor/{autorId}")
     public List<PostResponse> listarPorAutor(
             @PathVariable Long autorId) {
@@ -40,7 +40,7 @@ public class PostController {
         return postService.listarPorAutor(autorId);
     }
 
-    // POST /post
+
     @PostMapping
     public PostResponse criar(
             @Valid @RequestBody PostRequest request) {
@@ -48,7 +48,7 @@ public class PostController {
         return postService.criar(request);
     }
 
-    // DELETE /post/{id}
+
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         postService.deletar(id);

@@ -1,22 +1,23 @@
-package br.edu.ifpb.ifgram.service;
+package com.ifpb.ifgram.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.edu.ifpb.ifgram.model.Comment;
-import br.edu.ifpb.ifgram.model.Post;
-import br.edu.ifpb.ifgram.model.User;
+import com.ifpb.ifgram.model.ModelComent;
+import com.ifpb.ifgram.model.Post;
+import com.ifpb.ifgram.model.User;
 
-import br.edu.ifpb.ifgram.repository.CommentRepository;
-import br.edu.ifpb.ifgram.repository.PostRepository;
-import br.edu.ifpb.ifgram.repository.UserRepository;
+import com.ifpb.ifgram.repository.CommentRepository;
+import com.ifpb.ifgram.repository.PostRepository;
+import com.ifpb.ifgram.repository.UserRepository;
 
-import br.edu.ifpb.ifgram.dto.CommentRequest;
-import br.edu.ifpb.ifgram.dto.CommentResponse;
+import com.ifpb.ifgram.dto.CommentRequest;
+import com.ifpb.ifgram.dto.CommentResponse;
 
 @Service
 public class CommentService {
@@ -57,7 +58,7 @@ public class CommentService {
                         "Usuário não encontrado"
                 ));
 
-        Comment comment = new Comment(
+        ModelComent comment = new ModelComent(
                 request.texto(),
                 post,
                 autor
@@ -96,4 +97,4 @@ public class CommentService {
 
         commentRepository.deleteById(id);
     }
-]
+}

@@ -1,6 +1,6 @@
-package br.edu.ifpb.ifgram.dto;
+package com.ifpb.ifgram.dto;
 
-import br.edu.ifpb.ifgram.model.Comment;
+import com.ifpb.ifgram.model.Comment;
 
 public record CommentResponse(
         Long id,
