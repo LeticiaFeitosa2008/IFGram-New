@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name="table_coment")
-public class ModelComent {
+public class Comment {
 
     @Id
 
@@ -30,15 +30,15 @@ public class ModelComent {
     @JoinColumn(name="user_id")
     private User autor;
 
-    public ModelComent(){}
+    public Comment(){}
 
-    public ModelComent (String texto, LocalDateTime criadoEm){
+    public Comment(String texto, LocalDateTime criadoEm){
 
         this.texto=texto;
         this.criadoEm=criadoEm;
     }
 
-    public ModelComent(@NotBlank(message = "O texto do comentário é obrigatório") @Size(max = 500, message = "O comentário deve ter no máximo 500 caracteres") String texto, Post post, User autor) {
+    public Comment(@NotBlank(message = "O texto do comentário é obrigatório") @Size(max = 500, message = "O comentário deve ter no máximo 500 caracteres") String texto, Post post, User autor) {
     }
 
     public Long getId (){

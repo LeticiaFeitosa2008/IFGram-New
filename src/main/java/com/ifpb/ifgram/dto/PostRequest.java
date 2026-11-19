@@ -1,4 +1,4 @@
-package br.edu.ifpb.ifgram.dto;
+package com.ifpb.ifgram.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

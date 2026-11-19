@@ -25,7 +25,7 @@ public class CommentController {
     @PostMapping
     public ResponseEntity<CommentResponse> criarComentario(@RequestBody CommentRequest request) {
 
-        CommentResponse response = commentService.criarComentario(request);
+        CommentResponse response = commentService.criar(request);
 
         if (response == null) {
 
@@ -46,7 +46,7 @@ public class CommentController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarComentario(@PathVariable Long id) {
 
-        boolean deletado = commentService.deletarComentario(id);
+        boolean deletado = commentService.deletar(id);
 
         if (deletado) {
 

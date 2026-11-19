@@ -5,10 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.ifpb.ifgram.model.ModelComent;
+import com.ifpb.ifgram.model.Comment;
 import com.ifpb.ifgram.model.Post;
 import com.ifpb.ifgram.model.User;
 
@@ -58,14 +57,14 @@ public class CommentService {
                         "Usuário não encontrado"
                 ));
 
-        ModelComent comment = new ModelComent(
+        Comment comment = new Comment(
                 request.texto(),
                 post,
                 autor
         );
 
         return CommentResponse.from(
-                commentRepository.save(comment)
+                this.commentRepository.save(comment)
         );
     }
 
@@ -86,7 +85,7 @@ public class CommentService {
     }
 
     @Transactional
-    public void deletar(Long id) {
+    public boolean deletar(Long id) {
 
         if (!commentRepository.existsById(id)) {
             throw new ResponseStatusException(
@@ -96,5 +95,6 @@ public class CommentService {
         }
 
         commentRepository.deleteById(id);
+        return false;
     }
 }
