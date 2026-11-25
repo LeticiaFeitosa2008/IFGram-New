@@ -27,9 +27,7 @@ public class PostService {
     }
 
     @Transactional
-
     public PostResponse criar(PostRequest request) throws Exception {
-
 
         Optional<User> autor = userRepository.findById(request.autorId());
         if (autor.isEmpty()){
@@ -81,9 +79,9 @@ public class PostService {
         return listaPostsResponse;
     }
 
-    public static PostResponse buscarPorId(Long id) throws Exception {
+    public PostResponse buscarPorId(Long id) throws Exception {
 
-        Optional<Post> post = PostRepository.findByAutorId(id);
+        Optional<Post> post = postRepository.findById(id);
         if (post.isEmpty()){
 
             throw new Exception("Post não encontrado");
@@ -93,7 +91,7 @@ public class PostService {
     }
 
     @Transactional
-    public static void deletar(Long id) throws Exception {
+    public void deletar(Long id) throws Exception {
 
         Optional<Post> post = postRepository.findById(id);
         if (post.isEmpty()) {

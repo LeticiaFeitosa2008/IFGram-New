@@ -28,8 +28,8 @@ public class PostController {
 
 
     @GetMapping("/{id}")
-    public PostResponse buscarPorId(@PathVariable Long id) {
-        return PostService.buscarPorId(Long id);
+    public PostResponse buscarPorId(@PathVariable Long id)throws Exception{
+        return postService.buscarPorId(id);
     }
 
 
@@ -43,15 +43,14 @@ public class PostController {
 
     @PostMapping
     public PostResponse criar(
-            @Valid @RequestBody PostRequest request) {
-
-        PostResponse criar = PostService.criar(request);
-        return criar;
+            @Valid @RequestBody PostRequest request) throws Exception {
+        PostResponse response = postService.criar(request);
+        return response;
     }
 
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) throws Exception {
-        PostService.deletar(id);
+        postService.deletar(id);
     }
 }
